@@ -1,0 +1,4 @@
+dependencies:
+  iamflinks/i2c_lcd_pcf8574:
+    version: "*"
+    override_path: '../../../'
