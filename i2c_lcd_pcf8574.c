@@ -204,15 +204,14 @@ void lcd_print_number(i2c_lcd_pcf8574_handle_t* lcd, uint8_t col, uint8_t row, u
     char buffer[buf_len];
 
     va_list args;
-    va_start(args, format);
+    va_start(args, str);
 
-    int chars_written = vsniprintf(buffer, buf_len, format, args);
+    int chars_written = vsniprintf(buffer, buf_len, str, args);
 
     va_end(args);
 
     if (chars_written < 0) {
         ESP_LOGE(TAG, "Encoding error in vsnprintf");
-        return -1;  // Return an error code
     }
 
     if ((size_t)chars_written >= buf_len) {
