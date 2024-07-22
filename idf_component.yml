@@ -1,0 +1,13 @@
+description: I2C_LCD_PCF8574 I2C LCD driver
+
+url: https://github.com/iamflinks/i2c_lcd_pcf8574
+issues: https://github.com/iamflinks/i2c_lcd_pcf8574/issues
+documentation: https://github.com/iamflinks/i2c_lcd_pcf8574/tree/main/README.md
+repository: https://github.com/iamflinks/i2c_lcd_pcf8574.git
+
+maintainers:
+  - "Femi Olugbon <olugbonfemi@gmail.com>"
+
+dependencies:
+  # Requires i2c_master_write_byte added in v4.4
+  idf: ">=4.4.0"
