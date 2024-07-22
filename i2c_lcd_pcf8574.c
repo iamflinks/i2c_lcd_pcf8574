@@ -192,6 +192,38 @@ void lcd_print(i2c_lcd_pcf8574_handle_t* lcd, const char* str) {
     }
 }
 
+void lcd_print_number(i2c_lcd_pcf8574_handle_t* lcd, uint8_t col, uint8_t row, uint8_t buf_len, const char *str, ...) {
+    //  Ensure the buffer length is greater than zero
+    if (buf_len == 0)
+    {
+        ESP_LOGE(TAG, "Buffer length must be greater than 0");
+        return -1;  // Return an error code
+    }
+
+    //  Create a buffer to hold the characters
+    char buffer[buf_len];
+
+    va_list args;
+    va_start(args, format);
+
+    int chars_written = vsniprintf(buffer, buf_len, format, args);
+
+    va_end(args);
+
+    if (chars_written < 0) {
+        ESP_LOGE(TAG, "Encoding error in vsnprintf");
+        return -1;  // Return an error code
+    }
+
+    if ((size_t)chars_written >= buf_len) {
+        ESP_LOGW(TAG, "Buffer overflow: %d characters needed, but only %d available", chars_written + 1, buf_len);
+    }
+
+    lcd_set_cursor(lcd, col, row);
+    lcd_print(lcd, buffer);
+    
+}
+
 static void lcd_send(i2c_lcd_pcf8574_handle_t* lcd, uint8_t value, bool is_data) {
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);

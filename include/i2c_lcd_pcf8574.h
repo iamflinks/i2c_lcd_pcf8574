@@ -84,6 +84,8 @@ void lcd_write(i2c_lcd_pcf8574_handle_t* lcd, uint8_t value);
 // Print a string to the LCD
 void lcd_print(i2c_lcd_pcf8574_handle_t* lcd, const char* str);
 
+void lcd_print_number(i2c_lcd_pcf8574_handle_t* lcd, uint8_t col, uint8_t row, uint8_t buf_len, const char *str, ...);
+
 
 #ifdef __cplusplus
 }
