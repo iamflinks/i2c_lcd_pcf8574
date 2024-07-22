@@ -40,10 +40,8 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
     lcd->row_offsets[2] = 0x00 + cols;
     lcd->row_offsets[3] = 0x40 + cols;
 
-    vTaskDelay(50 / portTICK_PERIOD_MS);
-
     lcd_write_i2c(lcd, 0x00, false, false);
-    vTaskDelay(50 / portTICK_PERIOD_MS);
+    ets_delay_us(50000);
 
     lcd->displaycontrol = 0x04;
     lcd->entrymode = 0x02;
@@ -56,7 +54,7 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
     i2c_master_stop(cmd);
     i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
     i2c_cmd_link_delete(cmd);
-    vTaskDelay(5 / portTICK_PERIOD_MS);
+    ets_delay_us(4500);
 
     cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
@@ -65,7 +63,7 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
     i2c_master_stop(cmd);
     i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
     i2c_cmd_link_delete(cmd);
-    vTaskDelay(1 / portTICK_PERIOD_MS);
+    ets_delay_us(200);
 
     cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
@@ -74,7 +72,7 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
     i2c_master_stop(cmd);
     i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
     i2c_cmd_link_delete(cmd);
-    vTaskDelay(1 / portTICK_PERIOD_MS);
+    ets_delay_us(200);
 
     cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
@@ -89,17 +87,17 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
     lcd_display(lcd);
     lcd_clear(lcd);
     lcd_left_to_right(lcd);
-}
+}  // lcd_begin()
 
 void lcd_clear(i2c_lcd_pcf8574_handle_t* lcd) {
     lcd_send(lcd, 0x01, false);
-    vTaskDelay(2 / portTICK_PERIOD_MS);
-}
+    ets_delay_us(1600);
+}  // lcd_clear()
 
 void lcd_home(i2c_lcd_pcf8574_handle_t* lcd) {
     lcd_send(lcd, 0x02, false);
-    vTaskDelay(2 / portTICK_PERIOD_MS);
-}
+    ets_delay_us(1600);
+}  // lcd_home()
 
 void lcd_set_cursor(i2c_lcd_pcf8574_handle_t* lcd, uint8_t col, uint8_t row) {
     if (row >= lcd->lines) {
@@ -109,7 +107,7 @@ void lcd_set_cursor(i2c_lcd_pcf8574_handle_t* lcd, uint8_t col, uint8_t row) {
         col = lcd->cols - 1;
     }
     lcd_send(lcd, 0x80 | (lcd->row_offsets[row] + col), false);
-}
+}  // lcd_set_cursor()
 
 void lcd_no_display(i2c_lcd_pcf8574_handle_t* lcd) {
     lcd->displaycontrol &= ~0x04;
@@ -197,7 +195,6 @@ void lcd_print_number(i2c_lcd_pcf8574_handle_t* lcd, uint8_t col, uint8_t row, u
     if (buf_len == 0)
     {
         ESP_LOGE(TAG, "Buffer length must be greater than 0");
-        return -1;  // Return an error code
     }
 
     //  Create a buffer to hold the characters
