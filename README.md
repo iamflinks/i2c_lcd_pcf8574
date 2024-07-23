@@ -1,6 +1,6 @@
 # I2C_LCD_PCF8574 I2C Liquid Crystal Display driver
 
-[![Component Registry](https://components.espressif.com/components/iamflinks/i2c_lcd_pcf8574/badge.svg)](https://components.espressif.com/components/iamflinks/i2c_lcd_pcf8574) [![Example build](https://github.com/iamflinks/i2c_lcd_pcf8574/actions/workflows/build_example.yml/badge.svg)](https://github.com/iamflinks/i2c_lcd_pcf8574/actions/workflows/build_example.yml)
+[![Component Registry](https://components.espressif.com/components/iamflinks/i2c_lcd_pcf8574/badge.svg)](https://components.espressif.com/components/iamflinks/i2c_lcd_pcf8574) 
 
 This repository contains an ESP-IDF driver for a Hitachi HD44790 compatible LCD attached to a PCF8574 I2C adapter connected over I2C.
 
@@ -48,3 +48,8 @@ The example uses GPIOs 21 and 22 for the SDA and SCL, respectively.
 ## Licence
 
 This component is provided under Apache 2.0 license, see [LICENSE](LICENSE.md) file for details.
+
+
+## Documentation
+
+Please check the [API](api.md) file for detailed API documentation.
