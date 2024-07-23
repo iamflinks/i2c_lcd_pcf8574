@@ -1,4 +1,4 @@
-version: 1.0.0
+version: 1.0.1
 
 license: "Apache"
 
@@ -21,3 +21,7 @@ maintainers:
 dependencies:
   # Requires i2c_master added in v4.4
   idf: ">=4.4.0"
+
+files:
+  exclude:
+  - ".gitignore"
