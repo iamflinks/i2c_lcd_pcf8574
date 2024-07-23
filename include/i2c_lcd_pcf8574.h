@@ -7,12 +7,13 @@
 /// The library work is lincensed under a BSD style license.
 ///
 /// \details
-/// This library can drive a LCD based on the Hitachi's HD44790 display chip that is wired through a PCF8574 I2C converter. It uses the esp-idf i2c_driver component for communication.
+/// This library can drive a LCD based on the Hitachi's HD44790 display chip that is wired through a PCF8574 I2C converter. It uses the esp-idf i2c_driver component for communication. The library was adapted from the LiquidCrystal_PCF8574 (Mathias Hertel) and LiquidCrystal_I2C Arduino libraries.
 ///
 ///
 /// ChangeLog:
 /// ===========
-/// * 07/22/2024 Created
+/// * 07/22/2024 --> Created
+/// * 07/23/2024 --> Added number printing functionality
 ///
 
 #pragma once
