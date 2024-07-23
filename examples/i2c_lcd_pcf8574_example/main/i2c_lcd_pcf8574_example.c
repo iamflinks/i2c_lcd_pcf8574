@@ -1,3 +1,5 @@
+// This example project shows various features basic setup to use the i2c_lcd_pcf8574 driver with 16 chars by 2 lines.
+
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"

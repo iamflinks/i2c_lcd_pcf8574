@@ -1,3 +1,5 @@
+// This example project shows various features of the lcd driver library, including examples for all the functions in the driver.
+
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
