@@ -1,4 +1,4 @@
-version: 0.0.1
+version: 1.0.0
 
 description: I2C_LCD_PCF8574 I2C LCD driver
 
@@ -11,5 +11,5 @@ maintainers:
   - "Femi Olugbon <olugbonfemi@gmail.com>"
 
 dependencies:
-  # Requires i2c_master_write_byte added in v4.4
+  # Requires i2c_master added in v4.4
   idf: ">=4.4.0"
