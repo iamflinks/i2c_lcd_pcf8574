@@ -1,3 +1,20 @@
+/// \file i2c_lcd_pcf8574.h
+/// \brief Liquid Crystal display driver with PCF8574 adapter for esp-idf
+///
+/// \author Femi Olugbon, https://iamflinks.github.io
+/// \copyright Copyright (c) 2024 by Femi Olugbon
+///
+/// The library work is lincensed under a BSD style license.
+///
+/// \details
+/// This library can drive a LCD based on the Hitachi's HD44790 display chip that is wired through a PCF8574 I2C converter. It uses the esp-idf i2c_driver component for communication.
+///
+///
+/// ChangeLog:
+/// ===========
+/// * 07/22/2024 Created
+///
+
 #pragma once
 
 #ifndef I2C_LCD_PCF8574_H
