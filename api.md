@@ -25,45 +25,25 @@ To use this driver:
 | Type | Name |
 | ---: | :--- |
 | void | [**lcd\_init**](#function-lcd_init) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd, uint8_t i2c_addr, i2c_port_t i2c_port) <br> _Initialize the I2C\_LCD\_PCF8574 driver._ |
-
 | void | [**lcd\_begin**](#function-lcd_begin) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd, uint8_t cols, uint8_t rows) <br> _Set the display size of the I2C\_LCD\_PCF8574 driver._ |
-
 | void | [**lcd\_clear**](#function-lcd_clear) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Clear the LCD display._ |
-
 | void | [**lcd\_home**](#function-lcd_home) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Set the LCD to home._ |
-
 | void | [**lcd\_set\_cursor**](#function-lcd_set_cursor) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd, uint8_t col, uint8_t row) <br> _Set the LCD cursor to a new position._ |
-
 | void | [**lcd\_no\_display**](#function-lcd_no_display) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Turn off the display._ |
-
 | void | [**lcd\_display**](#function-lcd_display) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Turn on the display._ |
-
 | void | [**lcd\_cursor**](#function-lcd_cursor) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Turn on the LCD cursor position._ |
-
 | void | [**lcd\_no\_cursor**](#function-lcd_no_cursor) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Turn off the LCD cursor position._ |
-
 | void | [**lcd\_blink**](#function-lcd_blink) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Turn on the LCD cursor blink._ |
-
 | void | [**lcd\_no\_blink**](#function-lcd_no_blink) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _Turn off the LCD cursor blink._ |
-
 | void | [**lcd\_scroll\_display_\left**](#function-lcd_scroll_display_left) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _This command will scroll the display left by one step without changing the RAM._ |
-
 | void | [**lcd\_scroll\_display_\right**](#function-lcd_scroll_display_right) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _This command will scroll the display right by one step without changing the RAM._ |
-
 | void | [**lcd\_left\_to\_right**](#function-lcd_left_to_right) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _This is for text that flows left to right._ |
-
 | void | [**lcd\_right\_to\_left**](#function-lcd_right_to_left) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _This is for text that flows left to right._ |
-
 | void | [**lcd\_auto\_scroll**](#function-lcd_autoscroll) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _This function will justify the text to the right from the cursor._ |
-
 | void | [**lcd\_no\_auto\_scroll**](#function-lcd_no_autoscroll) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd) <br> _This function will justify the text to the left from the cursor._ |
-
 | void | [**lcd\_set\_backlight**](#function-lcd_set_backlight) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd, uint8_t brightness) <br> _This function set the backlight brightness (PS: It can only be turn on or off)._ |
-
 | void | [**lcd\_create\_charl**](#function-lcd_create_char) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd, uint8_t location, uint8_t charmap[]) <br> _This function allows us to create up to 8 custom characters in the CGRAM locations._ |
-
 | void | [**lcd\_print**](#function-lcd_print) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd, const char* str) <br> _This function prints characters to the LCD._ |
-
 | void | [**lcd\_print\_number**](#function-lcd_print_number) ([**i2c\_lcd\_pcf8574\_handle\_t**](#struct-i2c_lcd_pcf8574_handle_t)\* lcd, uint8_t col, uint8_t row, uint8_t buf_len, const char *str, ...) <br> _Additional function to print numbers as formatted string._ |
 
 
