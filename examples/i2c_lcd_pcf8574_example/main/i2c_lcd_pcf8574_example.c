@@ -61,7 +61,7 @@ void app_main(void)
 
         // Update the counter on the LCD
         lcd_set_cursor(&lcd, 10, 1);
-        char buffer[6];
+        char buffer[16];
         snprintf(buffer, sizeof(buffer), "%5d", counter);
         lcd_print(&lcd, buffer);
 

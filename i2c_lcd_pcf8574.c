@@ -53,7 +53,7 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
 
     // Initialize the LCD
     lcd_write_i2c(lcd, 0x00, false, false);
-    ets_delay_us(50000);
+    esp_rom_delay_us(50000);
 
     // This follows after the reset mode
     lcd->displaycontrol = 0x04;
@@ -67,27 +67,27 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
     
     lcd_write_nibble(lcd, 0x03, false, cmd);
     i2c_master_stop(cmd);
-    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
-    ets_delay_us(4500);
+    esp_rom_delay_us(4500);
 
     cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
     i2c_master_write_byte(cmd, (lcd->i2c_addr << 1) | I2C_MASTER_WRITE, true);
     lcd_write_nibble(lcd, 0x03, false, cmd);
     i2c_master_stop(cmd);
-    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
-    ets_delay_us(200);
+    esp_rom_delay_us(200);
 
     cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
     i2c_master_write_byte(cmd, (lcd->i2c_addr << 1) | I2C_MASTER_WRITE, true);
     lcd_write_nibble(lcd, 0x03, false, cmd);
     i2c_master_stop(cmd);
-    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
-    ets_delay_us(200);
+    esp_rom_delay_us(200);
 
     // Set the data interface to 4-bit interface (PCF8574 uses 4-bit interface)
     cmd = i2c_cmd_link_create();
@@ -95,7 +95,7 @@ void lcd_begin(i2c_lcd_pcf8574_handle_t* lcd, uint8_t cols, uint8_t rows) {
     i2c_master_write_byte(cmd, (lcd->i2c_addr << 1) | I2C_MASTER_WRITE, true);
     lcd_write_nibble(lcd, 0x02, false, cmd);
     i2c_master_stop(cmd);
-    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+    i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
 
     // Instruction: function set = 0x20
@@ -112,7 +112,7 @@ void lcd_clear(i2c_lcd_pcf8574_handle_t* lcd) {
     // Instruction: Clear display = 0x01
     lcd_send(lcd, 0x01, false);
     // Clearing the display takes a while: takes approx. 1.5ms
-    ets_delay_us(1600);
+    esp_rom_delay_us(1600);
 }  // lcd_clear()
 
 // Set the display to home
@@ -120,7 +120,7 @@ void lcd_home(i2c_lcd_pcf8574_handle_t* lcd) {
     // Instruction: Return home = 0x02
     lcd_send(lcd, 0x02, false);
     // Same as clearing the display: takes approx. 1.5ms
-    ets_delay_us(1600);
+    esp_rom_delay_us(1600);
 }  // lcd_home()
 
 // Set the cursor to a new position.
@@ -303,7 +303,7 @@ static void lcd_send(i2c_lcd_pcf8574_handle_t* lcd, uint8_t value, bool is_data)
     lcd_write_nibble(lcd, (value >> 4 & 0x0F), is_data, cmd);
     lcd_write_nibble(lcd, (value & 0x0F), is_data, cmd);
     i2c_master_stop(cmd);
-    esp_err_t ret = i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+    esp_err_t ret = i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
     
     if (ret != ESP_OK) {
@@ -348,7 +348,7 @@ static void lcd_write_i2c(i2c_lcd_pcf8574_handle_t* lcd, uint8_t data, bool is_d
     i2c_master_write_byte(cmd, (lcd->i2c_addr << 1) | I2C_MASTER_WRITE, true);
     i2c_master_write_byte(cmd, data, true);
     i2c_master_stop(cmd);
-    esp_err_t ret = i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+    esp_err_t ret = i2c_master_cmd_begin(lcd->i2c_port, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
 
     if (ret != ESP_OK) {
